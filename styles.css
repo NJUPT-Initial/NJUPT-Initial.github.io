@@ -38,9 +38,33 @@ body {
   font-size: 16.5px;
   line-height: 1.65;
   color: var(--ink);
-  background: var(--bg);
+  background-color: var(--bg);
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--line) 55%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--line) 55%, transparent) 1px, transparent 1px);
+  background-size: 48px 48px;
+  background-position: center top;
+  background-attachment: fixed;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 70% 45% at 50% -10%, color-mix(in srgb, var(--signal) 10%, transparent), transparent 55%),
+    radial-gradient(ellipse 40% 30% at 100% 40%, color-mix(in srgb, var(--alert) 4%, transparent), transparent 50%);
+}
+
+main,
+.site-header,
+.site-footer {
+  position: relative;
+  z-index: 1;
 }
 
 img,
@@ -186,10 +210,21 @@ a:hover {
 .eyebrow {
   font-family: var(--font-label);
   font-size: 0.78rem;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   color: var(--signal);
   margin: 0 0 0.85rem;
   text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.eyebrow::after {
+  content: "";
+  flex: 1;
+  max-width: 72px;
+  height: 1px;
+  background: linear-gradient(90deg, color-mix(in srgb, var(--signal) 55%, transparent), transparent);
 }
 
 h1,
@@ -203,11 +238,15 @@ h3 {
 }
 
 h1 {
-  font-size: clamp(2rem, 5.5vw, 3.35rem);
+  font-size: clamp(2.15rem, 6vw, 3.65rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.12;
 }
 
 h2 {
-  font-size: clamp(1.55rem, 3.2vw, 2.15rem);
+  font-size: clamp(1.6rem, 3.4vw, 2.25rem);
+  letter-spacing: -0.025em;
 }
 
 h3 {
@@ -260,23 +299,25 @@ code {
 .btn-primary {
   background: var(--signal);
   color: var(--ink-on-alert);
+  box-shadow: 0 0 0 0 color-mix(in srgb, var(--signal) 40%, transparent);
 }
 
 .btn-primary:hover {
   background: #99f6e4;
   color: var(--ink-on-alert);
+  box-shadow: 0 8px 28px color-mix(in srgb, var(--signal) 28%, transparent);
 }
 
 .btn-ghost {
-  background: transparent;
+  background: color-mix(in srgb, var(--panel) 50%, transparent);
   color: var(--ink);
-  border-color: var(--line);
+  border-color: color-mix(in srgb, var(--line) 70%, var(--signal));
 }
 
 .btn-ghost:hover {
   border-color: var(--signal);
   color: var(--signal);
-  background: color-mix(in srgb, var(--signal) 6%, transparent);
+  background: color-mix(in srgb, var(--signal) 8%, transparent);
 }
 
 .hero-actions {
@@ -288,10 +329,8 @@ code {
 
 /* —— Hero —— */
 .hero {
-  padding: clamp(2.5rem, 6vw, 4.5rem) 0 clamp(2rem, 4vw, 3rem);
-  background:
-    radial-gradient(ellipse 80% 50% at 70% 0%, color-mix(in srgb, var(--signal) 8%, transparent), transparent 60%),
-    var(--bg);
+  padding: clamp(2.75rem, 7vw, 5rem) 0 clamp(2.25rem, 5vw, 3.5rem);
+  background: transparent;
 }
 
 .hero-grid {
@@ -307,6 +346,7 @@ code {
 
 .hero-title-line.accent {
   color: var(--signal);
+  text-shadow: 0 0 42px color-mix(in srgb, var(--signal) 28%, transparent);
 }
 
 .hero-lead {
@@ -348,10 +388,32 @@ code {
 }
 
 .hero-panel {
-  border: 1px solid var(--line);
-  background: var(--panel);
+  border: 1px solid color-mix(in srgb, var(--signal) 28%, var(--line));
+  background:
+    linear-gradient(160deg, color-mix(in srgb, var(--panel) 92%, var(--signal) 6%), var(--panel) 45%, var(--bg));
   border-radius: var(--radius);
   overflow: hidden;
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--bg) 80%, transparent),
+    0 24px 60px color-mix(in srgb, #000 45%, transparent),
+    0 0 80px color-mix(in srgb, var(--signal) 8%, transparent);
+  position: relative;
+}
+
+.hero-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    color-mix(in srgb, var(--signal) 3%, transparent) 3px,
+    color-mix(in srgb, var(--signal) 3%, transparent) 4px
+  );
+  opacity: 0.45;
+  z-index: 2;
 }
 
 .panel-head {
@@ -364,6 +426,9 @@ code {
   font-size: 0.72rem;
   letter-spacing: 0.1em;
   color: var(--muted);
+  position: relative;
+  z-index: 3;
+  background: color-mix(in srgb, var(--bg) 35%, transparent);
 }
 
 .panel-head .dot {
@@ -384,6 +449,8 @@ code {
   width: 100%;
   height: auto;
   padding: 0.5rem 0.75rem;
+  position: relative;
+  z-index: 3;
 }
 
 .ch-strip {
@@ -393,6 +460,9 @@ code {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   border-top: 1px solid var(--line);
+  position: relative;
+  z-index: 3;
+  background: color-mix(in srgb, var(--bg) 55%, transparent);
 }
 
 .ch-strip li {
@@ -423,13 +493,25 @@ code {
 /* —— Rail —— */
 .rail {
   border-block: 1px solid var(--line);
-  background: color-mix(in srgb, var(--panel) 70%, var(--bg));
+  background: color-mix(in srgb, var(--panel) 82%, var(--bg));
+  backdrop-filter: blur(8px);
 }
 
 .rail-inner {
   display: flex;
   flex-wrap: wrap;
   gap: 0.25rem 0;
+  position: relative;
+}
+
+.rail-inner::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--signal) 40%, transparent), transparent);
 }
 
 .rail-item {
@@ -565,8 +647,13 @@ code {
 }
 
 .hw-block {
-  background: var(--bg);
-  padding: 1.25rem;
+  background: color-mix(in srgb, var(--bg) 88%, var(--panel));
+  padding: 1.35rem 1.25rem;
+  transition: background 0.15s ease;
+}
+
+.hw-block:hover {
+  background: color-mix(in srgb, var(--signal) 5%, var(--bg));
 }
 
 .hw-block h3 {
@@ -644,7 +731,7 @@ code {
 .mode-cell {
   appearance: none;
   border: 1px solid var(--line);
-  background: var(--bg);
+  background: color-mix(in srgb, var(--panel) 55%, var(--bg));
   color: var(--ink);
   border-radius: var(--radius);
   padding: 1rem 0.7rem;
@@ -654,19 +741,31 @@ code {
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
-  transition: border-color 0.15s ease, background 0.15s ease;
+  transition: border-color 0.15s ease, background 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
   font: inherit;
 }
 
 .mode-cell:hover {
-  border-color: color-mix(in srgb, var(--signal) 50%, var(--line));
-  background: color-mix(in srgb, var(--signal) 4%, var(--bg));
+  border-color: color-mix(in srgb, var(--signal) 55%, var(--line));
+  background: color-mix(in srgb, var(--signal) 6%, var(--bg));
+  transform: translateY(-1px);
 }
 
 .mode-cell[aria-pressed="true"] {
   border-color: var(--signal);
-  background: color-mix(in srgb, var(--signal) 10%, var(--bg));
-  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--signal) 35%, transparent);
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--signal) 16%, var(--bg)), color-mix(in srgb, var(--signal) 6%, var(--bg)));
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, var(--signal) 40%, transparent),
+    0 8px 24px color-mix(in srgb, var(--signal) 12%, transparent);
+}
+
+.mode-cell[aria-pressed="true"] .mc-id {
+  color: #99f6e4;
+}
+
+.mode-cell[aria-pressed="true"] .mc-name {
+  color: var(--ink);
 }
 
 .mc-id {
@@ -733,20 +832,21 @@ code {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  padding: 1.1rem 1.25rem;
+  padding: 1.15rem 1.3rem;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   text-decoration: none;
   color: var(--ink);
-  background: transparent;
-  transition: border-color 0.15s ease, background 0.15s ease;
+  background: color-mix(in srgb, var(--panel) 40%, transparent);
+  transition: border-color 0.15s ease, background 0.15s ease, transform 0.15s ease;
   min-height: 44px;
 }
 
 .repo-row:hover {
   border-color: var(--signal);
-  background: color-mix(in srgb, var(--signal) 5%, transparent);
+  background: color-mix(in srgb, var(--signal) 6%, transparent);
   color: var(--ink);
+  transform: translateX(3px);
 }
 
 .repo-row h3 {
@@ -992,6 +1092,11 @@ body.js-ready.is-booted .telemetry-line {
 
   body.js-ready .telemetry-line {
     opacity: 1;
+    transform: none;
+  }
+
+  .mode-cell:hover,
+  .repo-row:hover {
     transform: none;
   }
 }
