@@ -1,17 +1,21 @@
 # DESIGN_NOTES — NJUPT Initial landing
 
-## Direction
-- Mode: Expressive org landing, existing-codebase style elevation.
-- Anchor: mission-control bay / robot telemetry console (not SaaS cards, not campus poster).
-- Keep tokens: bg #0A0F14 · panel #111820 · line #1E2A36 · ink #E6EDF3 · muted #8B9BAB · signal #5EEAD4 · alert #F97316.
-- Signature: wheel-legged schematic telemetry panel + CH5×CH8 mode deck.
-- Risk: bay plates + mono labels instead of card wall; awards as status chips not trophy emoji.
+## Current direction (v3 — race bay)
+- Mode: Expressive org landing.
+- Anchor: competitive race-bay / pit-wall engineering (not teal lab console).
+- Palette:
+  - bg #0B0C10 · panel #14161C · line #2A2E3A
+  - ink #F4F1EA (warm paper) · muted #9CA3AF
+  - signal #FF4D1C (competition flame — primary)
+  - signal-soft #FF7A4D · alert #F5C542 (medal gold — awards only)
+- Signature: wheel-legged schematic + CH5×CH8 mode deck + gold award chips.
+- Risk: flame primary instead of safe teal; awards read as medals, not badges.
 
-## Full UI pass (user asked for overall style)
-- Section headers as instrument bay plates (code / title / meta).
-- Stronger type scale and vertical rhythm tokens.
-- Timeline as mission log; disciplines as channels; join as final bay.
-- Refined buttons, chips, hover/focus, reduced-motion.
+## Prior versions
+- v1 instrument console: #0A0F14 / #5EEAD4 / #F97316 (teal telemetry)
+- v2 same palette, bay-plate composition upgrade
+- v3 palette + personality shift to race bay
 
 ## Avoid
-- Second accent palette, CDN fonts, stock photos, hiding mobile nav.
+- Reintroducing teal as primary.
+- CDN fonts / stock photos / hiding mobile nav.

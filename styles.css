@@ -1,16 +1,16 @@
-/* NJUPT Initial — mission-control bay landing
-   Tokens: instrument console language, elevated composition */
+/* NJUPT Initial — race-bay landing
+   Competitive engineering: flame accent, warm paper ink */
 
 :root {
-  --bg: #0A0F14;
-  --panel: #111820;
-  --line: #1E2A36;
-  --ink: #E6EDF3;
-  --muted: #8B9BAB;
-  --signal: #5EEAD4;
-  --signal-soft: #99f6e4;
-  --alert: #F97316;
-  --ink-on-alert: #0A0F14;
+  --bg: #0B0C10;
+  --panel: #14161C;
+  --line: #2A2E3A;
+  --ink: #F4F1EA;
+  --muted: #9CA3AF;
+  --signal: #FF4D1C;
+  --signal-soft: #FF7A4D;
+  --alert: #F5C542;
+  --ink-on-alert: #0B0C10;
 
   --font-display: "Segoe UI", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
   --font-body: "Segoe UI", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
@@ -65,8 +65,8 @@ body::before {
   pointer-events: none;
   z-index: 0;
   background:
-    radial-gradient(ellipse 75% 48% at 50% -8%, color-mix(in srgb, var(--signal) 11%, transparent), transparent 58%),
-    radial-gradient(ellipse 36% 28% at 100% 42%, color-mix(in srgb, var(--alert) 5%, transparent), transparent 52%);
+    radial-gradient(ellipse 70% 45% at 50% -6%, color-mix(in srgb, var(--signal) 14%, transparent), transparent 56%),
+    radial-gradient(ellipse 36% 28% at 0% 50%, color-mix(in srgb, var(--alert) 5%, transparent), transparent 50%);
 }
 
 main,
@@ -450,13 +450,13 @@ code {
 
 .award-badge {
   font-family: var(--font-label);
-  font-size: 0.78rem;
+  font-size: 0.82rem;
   font-weight: 700;
   color: var(--ink-on-alert);
   background: var(--alert);
-  padding: 0.22rem 0.55rem;
+  padding: 0.28rem 0.6rem;
   border-radius: 3px;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
 }
 
 .hero-meta {
@@ -721,7 +721,8 @@ code {
 
 .log-status.alert {
   color: var(--alert);
-  border-color: color-mix(in srgb, var(--alert) 45%, var(--line));
+  border-color: color-mix(in srgb, var(--alert) 50%, var(--line));
+  background: color-mix(in srgb, var(--alert) 10%, transparent);
 }
 
 /* channels / disciplines */
@@ -831,12 +832,12 @@ code {
 }
 
 .safety {
-  border: 1px solid color-mix(in srgb, var(--alert) 22%, var(--line));
+  border: 1px solid color-mix(in srgb, var(--signal) 28%, var(--line));
   padding: 1.25rem 1.35rem;
   margin-bottom: 1.25rem;
   border-radius: var(--radius-lg);
   background:
-    linear-gradient(135deg, color-mix(in srgb, var(--alert) 5%, transparent), transparent 45%),
+    linear-gradient(135deg, color-mix(in srgb, var(--signal) 7%, transparent), transparent 48%),
     color-mix(in srgb, var(--panel) 40%, var(--bg));
 }
 
@@ -856,8 +857,8 @@ code {
   font-family: var(--font-label);
   font-size: 0.68rem;
   letter-spacing: 0.1em;
-  color: var(--alert);
-  border: 1px solid color-mix(in srgb, var(--alert) 40%, var(--line));
+  color: var(--signal);
+  border: 1px solid color-mix(in srgb, var(--signal) 40%, var(--line));
   padding: 0.28rem 0.55rem;
   border-radius: 3px;
 }
@@ -881,7 +882,7 @@ code {
 .safety-list span {
   font-family: var(--font-label);
   font-size: 0.75rem;
-  color: var(--alert);
+  color: var(--signal);
   padding-top: 0.15rem;
 }
 
@@ -1079,7 +1080,7 @@ code {
 /* join */
 .section-join {
   background:
-    radial-gradient(ellipse 55% 70% at 100% 50%, color-mix(in srgb, var(--alert) 8%, transparent), transparent 55%),
+    radial-gradient(ellipse 55% 70% at 100% 50%, color-mix(in srgb, var(--signal) 10%, transparent), transparent 55%),
     color-mix(in srgb, var(--panel) 42%, var(--bg));
   border-top: 1px solid var(--line);
 }
@@ -1125,7 +1126,7 @@ code {
 .join-panel li span {
   font-family: var(--font-label);
   font-size: 0.75rem;
-  color: var(--alert);
+  color: var(--signal);
 }
 
 /* footer */
