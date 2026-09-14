@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="NJUPT Initial — 南京邮电大学 Robocon 战队。以热爱为起点，用工程让想法落地。2026 ROBOCON 仿生足式机器人挑战赛障碍赛国二、任务赛国三。" />
+  <meta name="theme-color" content="#0A0F14" />
+  <meta property="og:title" content="NJUPT Initial · 南京邮电大学机器人团队" />
+  <meta property="og:description" content="以热爱为起点，用工程让想法落地。ROBOCON 2026 障碍赛国二 · 任务赛国三" />
+  <meta property="og:type" content="website" />
+  <title>NJUPT Initial · 南京邮电大学机器人团队</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230A0F14'/%3E%3Ccircle cx='16' cy='16' r='7' fill='none' stroke='%235EEAD4' stroke-width='2'/%3E%3Ccircle cx='16' cy='16' r='2' fill='%235EEAD4'/%3E%3C/svg%3E" />
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到主要内容</a>
+
+  <header class="site-header" data-header>
+    <div class="shell header-inner">
+      <a class="brand" href="#top" aria-label="NJUPT Initial 首页">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-text">
+          <span class="brand-name">NJUPT Initial</span>
+          <span class="brand-sub">Robocon Team</span>
+        </span>
+      </a>
+      <nav class="nav" aria-label="页面章节">
+        <a href="#about">关于</a>
+        <a href="#discipline">方向</a>
+        <a href="#rc-dog">RC-dog</a>
+        <a href="#modes">模式</a>
+        <a href="#oss">开源</a>
+        <a class="nav-cta" href="#join">加入</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="shell hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow telemetry-line" data-boot style="--i:0">// SYS.BOOT · NJUPT-INITIAL</p>
+          <h1 id="hero-title" class="hero-title">
+            <span class="hero-title-line telemetry-line" data-boot style="--i:1">以热爱为起点</span>
+            <span class="hero-title-line accent telemetry-line" data-boot style="--i:2">用工程让想法落地</span>
+          </h1>
+          <p class="hero-lead telemetry-line" data-boot style="--i:3">
+            南京邮电大学 Robocon <strong>Initial</strong> 战队。
+            我们围绕机器人竞赛完成设计、研发与整机联调，在一次次调试和比赛中打磨可靠、灵活且富有创造力的机器人系统。
+          </p>
+          <div class="hero-actions telemetry-line" data-boot style="--i:4">
+            <a class="btn btn-primary" href="#rc-dog">查看旗舰系统</a>
+            <a class="btn btn-ghost" href="#join">加入交流</a>
+          </div>
+          <dl class="hero-meta telemetry-line" data-boot style="--i:5">
+            <div>
+              <dt>赛项</dt>
+              <dd>ROBOCON 2026 · 仿生足式</dd>
+            </div>
+            <div>
+              <dt>障碍赛</dt>
+              <dd class="meta-alert">国家二等奖</dd>
+            </div>
+            <div>
+              <dt>任务赛</dt>
+              <dd class="meta-alert">国家三等奖</dd>
+            </div>
+          </dl>
+        </div>
+
+        <aside class="hero-panel telemetry-line" data-boot style="--i:6" aria-label="机器人遥测示意">
+          <div class="panel-head">
+            <span class="dot" aria-hidden="true"></span>
+            <span>TELEMETRY · RC-DOG</span>
+            <span class="panel-head-right">LIVE</span>
+          </div>
+          <svg class="dog-schematic" viewBox="0 0 360 300" role="img" aria-label="八自由度轮足四足线框示意图">
+            <defs>
+              <linearGradient id="bodyGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#1a2834"/>
+                <stop offset="100%" stop-color="#0f1620"/>
+              </linearGradient>
+            </defs>
+            <!-- ground -->
+            <line x1="24" y1="268" x2="336" y2="268" stroke="#1E2A36" stroke-width="1"/>
+            <!-- body -->
+            <rect x="96" y="108" width="168" height="56" rx="6" fill="url(#bodyGrad)" stroke="#5EEAD4" stroke-width="1.5"/>
+            <text x="180" y="141" text-anchor="middle" fill="#8B9BAB" font-size="11" font-family="Cascadia Code, Consolas, monospace">MC-02 · H723</text>
+            <!-- front legs -->
+            <g class="limb" data-joint="LF">
+              <line x1="118" y1="164" x2="96" y2="210" stroke="#5EEAD4" stroke-width="2"/>
+              <line x1="96" y1="210" x2="110" y2="248" stroke="#5EEAD4" stroke-width="2"/>
+              <circle cx="118" cy="164" r="4" fill="#0A0F14" stroke="#5EEAD4" stroke-width="1.5"/>
+              <circle cx="96" cy="210" r="4" fill="#0A0F14" stroke="#5EEAD4" stroke-width="1.5"/>
+              <circle cx="110" cy="248" r="7" fill="none" stroke="#F97316" stroke-width="2"/>
+              <circle cx="110" cy="248" r="2" fill="#F97316"/>
+            </g>
+            <g class="limb" data-joint="RF">
+              <line x1="242" y1="164" x2="264" y2="210" stroke="#5EEAD4" stroke-width="2"/>
+              <line x1="264" y1="210" x2="250" y2="248" stroke="#5EEAD4" stroke-width="2"/>
+              <circle cx="242" cy="164" r="4" fill="#0A0F14" stroke="#5EEAD4" stroke-width="1.5"/>
+              <circle cx="264" cy="210" r="4" fill="#0A0F14" stroke="#5EEAD4" stroke-width="1.5"/>
+              <circle cx="250" cy="248" r="7" fill="none" stroke="#F97316" stroke-width="2"/>
+              <circle cx="250" cy="248" r="2" fill="#F97316"/>
+            </g>
+            <!-- rear legs -->
+            <g class="limb" data-joint="LB">
+              <line x1="140" y1="164" x2="128" y2="210" stroke="#5EEAD4" stroke-width="2"/>
+              <line x1="128" y1="210" x2="142" y2="248" stroke="#5EEAD4" stroke-width="2"/>
+              <circle cx="140" cy="164" r="4" fill="#0A0F14" stroke="#5EEAD4" stroke-width="1.5"/>
+              <circle cx="128" cy="210" r="4" fill="#0A0F14" stroke="#5EEAD4" stroke-width="1.5"/>
+              <circle cx="142" cy="248" r="7" fill="none" stroke="#F97316" stroke-width="2"/>
+              <circle cx="142" cy="248" r="2" fill="#F97316"/>
+            </g>
+            <g class="limb" data-joint="RB">
+              <line x1="220" y1="164" x2="232" y2="210" stroke="#5EEAD4" stroke-width="2"/>
+              <line x1="232" y1="210" x2="218" y2="248" stroke="#5EEAD4" stroke-width="2"/>
+              <circle cx="220" cy="164" r="4" fill="#0A0F14" stroke="#5EEAD4" stroke-width="1.5"/>
+              <circle cx="232" cy="210" r="4" fill="#0A0F14" stroke="#5EEAD4" stroke-width="1.5"/>
+              <circle cx="218" cy="248" r="7" fill="none" stroke="#F97316" stroke-width="2"/>
+              <circle cx="218" cy="248" r="2" fill="#F97316"/>
+            </g>
+            <!-- labels -->
+            <text x="78" y="100" fill="#8B9BAB" font-size="10" font-family="Cascadia Code, Consolas, monospace">8-DOF</text>
+            <text x="250" y="100" fill="#8B9BAB" font-size="10" font-family="Cascadia Code, Consolas, monospace">4×WHEEL</text>
+            <text x="180" y="286" text-anchor="middle" fill="#8B9BAB" font-size="10" font-family="Cascadia Code, Consolas, monospace">WHEEL-LEG QUADRUPED</text>
+          </svg>
+          <ul class="ch-strip" aria-label="关键通道">
+            <li><span>CH5</span><em>MODE</em></li>
+            <li><span>CH8</span><em>MODE</em></li>
+            <li><span>CH9</span><em>E-STOP</em></li>
+            <li><span>CAN</span><em>×3 BUS</em></li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <!-- STATUS RAIL -->
+    <section class="rail" aria-label="赛季状态">
+      <div class="shell rail-inner">
+        <div class="rail-item"><span class="k">SEASON</span><span class="v">2026</span></div>
+        <div class="rail-item"><span class="k">EVENT</span><span class="v">ROBOCON 仿生足式</span></div>
+        <div class="rail-item"><span class="k">OBSTACLE</span><span class="v alert">国二</span></div>
+        <div class="rail-item"><span class="k">MISSION</span><span class="v alert">国三</span></div>
+        <div class="rail-item"><span class="k">MCU</span><span class="v">STM32H723 · DM MC-02</span></div>
+        <div class="rail-item"><span class="k">STACK</span><span class="v">LibXR · XRobot</span></div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section" id="about" aria-labelledby="about-title">
+      <div class="shell">
+        <p class="eyebrow">// 01 OVERVIEW</p>
+        <div class="split">
+          <div>
+            <h2 id="about-title">一支把想法做成机器的队伍</h2>
+            <p class="prose">
+              NJUPT Initial 是来自南京邮电大学的学生机器人团队。
+              我们不满足于纸面方案——从机构设计、电控联调到运控算法，每一条链路都要在实机上闭环验证。
+            </p>
+            <p class="prose">
+              首个赛季即征战第二十五届全国大学生机器人大赛 ROBOCON，取得仿生足式机器人挑战赛
+              <strong>障碍赛国家二等奖</strong>、<strong>任务赛国家三等奖</strong>。
+            </p>
+          </div>
+          <ol class="timeline">
+            <li>
+              <span class="t-when">2026</span>
+              <span class="t-what">团队创建，完成赛季整机研发与开源沉淀</span>
+            </li>
+            <li>
+              <span class="t-when">2026.07</span>
+              <span class="t-what">ROBOCON 仿生足式：障碍赛国二 · 任务赛国三</span>
+            </li>
+            <li>
+              <span class="t-when">NOW</span>
+              <span class="t-what">架构迁移到 LibXR / XRobot，模块与安全边界可维护</span>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- DISCIPLINES -->
+    <section class="section section-alt" id="discipline" aria-labelledby="disc-title">
+      <div class="shell">
+        <p class="eyebrow">// 02 DISCIPLINES</p>
+        <h2 id="disc-title">三条技术主链</h2>
+        <p class="section-lead">跨专业协作不是口号——机械、电控、算法在同一台机器人上对齐接口与验收标准。</p>
+        <div class="spec-table" role="table" aria-label="技术方向">
+          <div class="spec-row" role="row">
+            <div class="spec-key" role="rowheader">01 · 机械设计</div>
+            <div class="spec-val" role="cell">
+              机构设计、建模仿真与加工装配。负责腿系自由度布局、轮足复合驱动、整机结构与可维护性。
+            </div>
+          </div>
+          <div class="spec-row" role="row">
+            <div class="spec-key" role="rowheader">02 · 电控与嵌入式</div>
+            <div class="spec-val" role="cell">
+              硬件设计、驱动控制与系统联调。STM32 实时固件、CAN 执行器网络、遥控与上位机链路、安全状态机。
+            </div>
+          </div>
+          <div class="spec-row" role="row">
+            <div class="spec-key" role="rowheader">03 · 算法与感知</div>
+            <div class="spec-val" role="cell">
+              环境感知、定位规划与智能决策。步态与足端轨迹、障碍状态机、上位机遥测与调试工具链。
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RC-DOG -->
+    <section class="section" id="rc-dog" aria-labelledby="dog-title">
+      <div class="shell">
+        <p class="eyebrow">// 03 FLAGSHIP · RC-DOG</p>
+        <h2 id="dog-title">8 自由度轮足四足固件</h2>
+        <p class="section-lead">
+          <code>26Initial-RC-dog</code> 是赛季主控固件：统一 LibXR 硬件抽象与 XRobot 模块框架，
+          以可生成入口替代手工漂移，把输入仲裁、安全锁存与电机保护收拢到清晰边界。
+        </p>
+
+        <div class="hw-grid">
+          <article class="hw-block">
+            <h3>关节执行</h3>
+            <p>8 × 海泰 HWG7015-J8 + 守护兽驱动板</p>
+            <span class="hw-tag">FDCAN1 / FDCAN2 · 8:1</span>
+          </article>
+          <article class="hw-block">
+            <h3>轮组执行</h3>
+            <p>4 × M3508 + 减速箱 + C620 电调</p>
+            <span class="hw-tag">FDCAN3 · 268/17</span>
+          </article>
+          <article class="hw-block">
+            <h3>主控制系统</h3>
+            <p>达妙 DM MC-02（STM32H723）</p>
+            <span class="hw-tag">FreeRTOS · C++20</span>
+          </article>
+          <article class="hw-block">
+            <h3>链路</h3>
+            <p>SBUS 遥控 + XRUSB CDC 上位机</p>
+            <span class="hw-tag">Topic · CRC 校验</span>
+          </article>
+        </div>
+
+        <div class="safety">
+          <h3>安全架构要点</h3>
+          <ul class="safety-list">
+            <li><span>S1</span>上电默认安全锁存；无新鲜 SBUS 不允许运动</li>
+            <li><span>S2</span>CH9 实体急停最高优先级，锁腿锁轮</li>
+            <li><span>S3</span>SBUS 250 ms / USB 150 ms 看门狗与会话零命令</li>
+            <li><span>S4</span>轮电机 70 °C 降额 · 85 °C 切断 · 峰值电流预算</li>
+            <li><span>S5</span>腿/轮反馈超时与 CAN bus-off 进入故障态</li>
+          </ul>
+        </div>
+
+        <p class="repo-note">
+          源码与完整协议文档见
+          <a href="https://github.com/NJUPT-Initial/26Initial-RC-dog" target="_blank" rel="noopener noreferrer">NJUPT-Initial/26Initial-RC-dog</a>
+          （MIT）。早期框架曾参考辽宁科技大学 COD 开源模板，后迁移到维护更完善的 XRobot/LibXR。
+        </p>
+      </div>
+    </section>
+
+    <!-- MODES -->
+    <section class="section section-alt" id="modes" aria-labelledby="modes-title">
+      <div class="shell">
+        <p class="eyebrow">// 04 MODE MAP · CH5 × CH8</p>
+        <h2 id="modes-title">九宫格运行模式</h2>
+        <p class="section-lead">
+          固件用 CH5 / CH8 的 LOW · MID · HIGH 组合映射 9 种运行模式——这是机器人真正的“主菜单”。
+        </p>
+
+        <div class="mode-layout">
+          <div
+            class="mode-grid"
+            role="group"
+            aria-label="运行模式九宫格"
+            data-mode-grid
+          >
+            <button type="button" class="mode-cell" aria-pressed="false" data-mode="0" data-name="MOTOR_CHECK" data-desc="腿安全停止，轮关闭并锁定。默认检查态。">
+              <span class="mc-id">0</span><span class="mc-name">MOTOR_CHECK</span>
+            </button>
+            <button type="button" class="mode-cell" aria-pressed="false" data-mode="1" data-name="LOW_WHEEL" data-desc="髋关节低姿 −15°，轮驱动前进。">
+              <span class="mc-id">1</span><span class="mc-name">LOW_WHEEL</span>
+            </button>
+            <button type="button" class="mode-cell" aria-pressed="false" data-mode="2" data-name="LOW_WHEEL_REVERSE" data-desc="髋关节反向低姿 +5°，轮驱动。换向前需回中 200 ms。">
+              <span class="mc-id">2</span><span class="mc-name">LOW_REV</span>
+            </button>
+            <button type="button" class="mode-cell" aria-pressed="false" data-mode="3" data-name="STAND_HOLD" data-desc="标准站立，轮 HOLD。整机姿态保持。">
+              <span class="mc-id">3</span><span class="mc-name">STAND_HOLD</span>
+            </button>
+            <button type="button" class="mode-cell" aria-pressed="true" data-mode="4" data-name="STAND_WHEEL" data-desc="站立完成后轮驱动。轮腿混合的常用巡航态。">
+              <span class="mc-id">4</span><span class="mc-name">STAND_WHEEL</span>
+            </button>
+            <button type="button" class="mode-cell" aria-pressed="false" data-mode="5" data-name="STAND_HOLD_ALT" data-desc="保留站立，轮 HOLD（备用保持）。">
+              <span class="mc-id">5</span><span class="mc-name">STAND_ALT</span>
+            </button>
+            <button type="button" class="mode-cell" aria-pressed="false" data-mode="6" data-name="GAIT_ONLY" data-desc="对角 trot 步态，轮 HOLD。纯腿式移动。">
+              <span class="mc-id">6</span><span class="mc-name">GAIT_ONLY</span>
+            </button>
+            <button type="button" class="mode-cell" aria-pressed="false" data-mode="7" data-name="GAIT_WHEEL" data-desc="对角 trot 与轮驱动混合。">
+              <span class="mc-id">7</span><span class="mc-name">GAIT_WHEEL</span>
+            </button>
+            <button type="button" class="mode-cell" aria-pressed="false" data-mode="8" data-name="OBSTACLE" data-desc="仅实体 SBUS HIGH+HIGH 可触发单级上台阶；USB mode 8 为保留站立。">
+              <span class="mc-id">8</span><span class="mc-name">OBSTACLE</span>
+            </button>
+          </div>
+
+          <aside class="mode-detail" data-mode-detail aria-live="polite">
+            <p class="mode-detail-eyebrow">SELECTED</p>
+            <p class="mode-detail-id" data-detail-id>MODE 04</p>
+            <h3 data-detail-name>STAND_WHEEL</h3>
+            <p data-detail-desc>站立完成后轮驱动。轮腿混合的常用巡航态。</p>
+            <p class="mode-detail-foot">CH5 + CH8 九宫格 · 实体遥控优先于 USB</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- OSS -->
+    <section class="section" id="oss" aria-labelledby="oss-title">
+      <div class="shell">
+        <p class="eyebrow">// 05 OPEN SOURCE</p>
+        <h2 id="oss-title">公开仓库与技术栈</h2>
+        <p class="section-lead">赛季工程经验沉淀为可复用模块；欢迎 Issue 交流，也欢迎基于 MIT 协议学习与二次开发。</p>
+
+        <div class="repo-list">
+          <a class="repo-row" href="https://github.com/NJUPT-Initial/26Initial-RC-dog" target="_blank" rel="noopener noreferrer">
+            <div>
+              <h3>26Initial-RC-dog</h3>
+              <p>轮足四足主控固件 · C++ · MIT</p>
+            </div>
+            <span class="repo-go" aria-hidden="true">→</span>
+          </a>
+          <a class="repo-row" href="https://github.com/NJUPT-Initial/CyberBeast-driver-board-parameter-calibration" target="_blank" rel="noopener noreferrer">
+            <div>
+              <h3>CyberBeast 标定</h3>
+              <p>守护兽驱动板 · 海泰 7015 电机参数</p>
+            </div>
+            <span class="repo-go" aria-hidden="true">→</span>
+          </a>
+          <a class="repo-row" href="https://github.com/NJUPT-Initial/.github" target="_blank" rel="noopener noreferrer">
+            <div>
+              <h3>组织主页 .github</h3>
+              <p>战队介绍与招新入口</p>
+            </div>
+            <span class="repo-go" aria-hidden="true">→</span>
+          </a>
+        </div>
+
+        <ul class="stack-chips" aria-label="技术栈">
+          <li>STM32H723</li>
+          <li>FreeRTOS</li>
+          <li>LibXR</li>
+          <li>XRobot</li>
+          <li>CAN / FDCAN</li>
+          <li>SBUS</li>
+          <li>USB CDC</li>
+          <li>CMake + Ninja</li>
+          <li>C++20</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- JOIN -->
+    <section class="section section-join" id="join" aria-labelledby="join-title">
+      <div class="shell join-inner">
+        <div>
+          <p class="eyebrow">// 06 JOIN</p>
+          <h2 id="join-title">下一赛季，从这里开始</h2>
+          <p class="prose">
+            我们欢迎对机器人、工程实践和团队协作感兴趣的南邮同学。
+            无论你擅长机械、电子、软件，还是刚刚开始了解机器人，都可以从一次对话开始。
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="https://github.com/NJUPT-Initial/.github/issues" target="_blank" rel="noopener noreferrer">通过 Issues 联系我们</a>
+            <a class="btn btn-ghost" href="https://github.com/NJUPT-Initial" target="_blank" rel="noopener noreferrer">访问组织主页</a>
+          </div>
+        </div>
+        <aside class="join-panel" aria-label="加入方式">
+          <p class="join-panel-k">CHANNELS</p>
+          <ul>
+            <li><span>01</span>GitHub Issues 说明你的方向与兴趣</li>
+            <li><span>02</span>关注组织仓库获取开源更新</li>
+            <li><span>03</span>从阅读 RC-dog README 与安全架构开始</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-inner">
+      <div>
+        <p class="footer-brand">NJUPT Initial</p>
+        <p class="footer-sub">南京邮电大学 · 第二十五届全国大学生机器人大赛 ROBOCON</p>
+      </div>
+      <p class="footer-credit">
+        致谢辽宁科技大学 COD 开源模板与 XRobot / LibXR 社区。
+        站点源码位于本仓库，欢迎 PR。
+      </p>
+    </div>
+  </footer>
+
+  <script src="main.js" defer></script>
+</body>
+</html>
