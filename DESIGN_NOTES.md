@@ -1,20 +1,17 @@
 # DESIGN_NOTES — NJUPT Initial landing
 
-## Direction (delivered)
-- Mode: Expressive (org landing), existing-codebase polish after first ship.
-- Anchor: robot telemetry / mission console — not campus poster, not SaaS cards.
-- Tokens: bg #0A0F14 · panel #111820 · line #1E2A36 · ink #E6EDF3 · muted #8B9BAB · signal #5EEAD4 · alert #F97316
-- Signature: wheel-legged schematic panel + CH5×CH8 mode matrix as real firmware menu.
-- Risk taken: no rounded card wall; hairline instrument frames + mono telemetry labels.
+## Direction
+- Mode: Expressive org landing, existing-codebase style elevation.
+- Anchor: mission-control bay / robot telemetry console (not SaaS cards, not campus poster).
+- Keep tokens: bg #0A0F14 · panel #111820 · line #1E2A36 · ink #E6EDF3 · muted #8B9BAB · signal #5EEAD4 · alert #F97316.
+- Signature: wheel-legged schematic telemetry panel + CH5×CH8 mode deck.
+- Risk: bay plates + mono labels instead of card wall; awards as status chips not trophy emoji.
 
-## Optimization pass (this session)
-Goal: raise perceived craft without changing brand language.
-- Strengthen hero thesis (type + panel presence).
-- Add quiet instrument chrome (grid/noise, better rail).
-- Tighten vertical rhythm and mode-grid selection feedback.
-- Keep contrast, reduced-motion, pure static constraints.
+## Full UI pass (user asked for overall style)
+- Section headers as instrument bay plates (code / title / meta).
+- Stronger type scale and vertical rhythm tokens.
+- Timeline as mission log; disciplines as channels; join as final bay.
+- Refined buttons, chips, hover/focus, reduced-motion.
 
-## Avoid repeating
-- Do not introduce second accent palette.
-- Do not add stock photos or CDN fonts.
-- Do not hide mobile section nav again.
+## Avoid
+- Second accent palette, CDN fonts, stock photos, hiding mobile nav.
