@@ -736,14 +736,42 @@ code {
   overflow: hidden;
 }
 
+.channel-grid-4 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
 .channel {
   background: color-mix(in srgb, var(--bg) 88%, var(--panel));
   padding: 1.35rem 1.25rem 1.25rem;
   transition: background 0.15s ease;
+  display: flex;
+  flex-direction: column;
 }
 
 .channel:hover {
   background: color-mix(in srgb, var(--signal) 5%, var(--bg));
+}
+
+.channel-prefer {
+  margin: 0 0 1rem;
+  padding: 0.7rem 0.8rem;
+  border-left: 2px solid var(--alert);
+  background: color-mix(in srgb, var(--alert) 6%, transparent);
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+.channel-prefer span {
+  font-family: var(--font-label);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  color: var(--alert);
+  margin-right: 0.45rem;
+}
+
+.channel .channel-tags {
+  margin-top: auto;
 }
 
 .channel-top {
@@ -1199,6 +1227,7 @@ body.js-ready.is-booted .telemetry-line {
   }
 
   .channel-grid,
+  .channel-grid-4,
   .hw-grid {
     grid-template-columns: 1fr 1fr;
   }
@@ -1234,6 +1263,7 @@ body.js-ready.is-booted .telemetry-line {
   }
 
   .channel-grid,
+  .channel-grid-4,
   .hw-grid {
     grid-template-columns: 1fr;
   }
