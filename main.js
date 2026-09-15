@@ -11,6 +11,7 @@
   const splashSeenKey = "initial-intro-seen";
   let splash = null;
   let splashTimer = 0;
+  let sloganTimer = 0;
   let splashLocked = false;
 
   const buildSplash = () => {
@@ -18,8 +19,30 @@
     splash = document.createElement("div");
     splash.className = "intro-splash";
     splash.setAttribute("aria-hidden", "true");
-    splash.innerHTML = `<div class="splash-half splash-orange"></div><div class="splash-half splash-blue"></div><div class="splash-grid"></div><img class="splash-logo" src="assets/team-logo.svg" alt="NJUPT Initial 队徽"><div class="splash-robot-wrap"><img class="splash-robot splash-ghost splash-ghost-orange" src="assets/robot-cutout.png" alt=""><img class="splash-robot splash-ghost splash-ghost-blue" src="assets/robot-cutout.png" alt=""><img class="splash-robot" src="assets/robot-cutout.png" alt=""></div><div class="splash-name"><span>NJUPT / INITIAL</span><strong>${splashCopy}</strong><small>ROBOCON ROBOTICS TEAM</small></div><div class="splash-gear-field" aria-hidden="true"><i class="gear gear-large"></i><i class="gear gear-small"></i><i class="gear gear-ring"></i><i class="gear gear-ticks"></i><i class="gear gear-core"></i><span class="gear-label">SYSTEM / READY</span><span class="gear-status gear-status-a">MOTOR ONLINE</span><span class="gear-status gear-status-b">FIELD TEST / 2026</span><span class="gear-readout">04 : 26 : 07</span></div><div class="splash-scroll"><span>SCROLL</span><i></i></div>`;
+    splash.innerHTML = `<div class="splash-slogan"><span>INITIAL / ROBOTICS LAB</span><strong>把想法做成真机器人。</strong><small>SCROLL TO ENTER</small></div><div class="splash-half splash-orange"></div><div class="splash-half splash-blue"></div><div class="splash-grid"></div><img class="splash-logo" src="assets/team-logo.svg" alt="NJUPT Initial 队徽"><div class="splash-robot-wrap"><img class="splash-robot splash-ghost splash-ghost-orange" src="assets/robot-cutout.png" alt=""><img class="splash-robot splash-ghost splash-ghost-blue" src="assets/robot-cutout.png" alt=""><img class="splash-robot" src="assets/robot-cutout.png" alt=""></div><div class="splash-name"><span>NJUPT / INITIAL</span><strong>${splashCopy}</strong><small>ROBOCON ROBOTICS TEAM</small></div><div class="splash-gear-field" aria-hidden="true"><i class="gear gear-large"></i><i class="gear gear-small"></i><i class="gear gear-ring"></i><i class="gear gear-ticks"></i><i class="gear gear-scan"></i><i class="gear gear-core"></i><span class="gear-label">SYSTEM / READY</span><span class="gear-status gear-status-a">MOTOR ONLINE</span><span class="gear-status gear-status-b">FIELD TEST / 2026</span><span class="gear-readout">04 : 26 : 07</span><span class="gear-telemetry">X 038.4 / Y 112.7 / Z 026.1</span></div><div class="splash-scroll"><span>SCROLL</span><i></i></div>`;
     document.body.prepend(splash);
+    const gearField = splash.querySelector(".splash-gear-field");
+    gearField.setAttribute("tabindex", "0");
+    gearField.setAttribute("aria-label", "互动齿轮控制界面，点击或按 Enter 加速");
+    gearField.addEventListener("pointermove", (event) => {
+      const rect = gearField.getBoundingClientRect();
+      const x = ((event.clientX - rect.left) / rect.width - .5) * 2;
+      const y = ((event.clientY - rect.top) / rect.height - .5) * 2;
+      gearField.style.setProperty("--gear-x", `${x * 7}deg`);
+      gearField.style.setProperty("--gear-y", `${y * -7}deg`);
+    });
+    gearField.addEventListener("pointerleave", () => {
+      gearField.style.setProperty("--gear-x", "0deg");
+      gearField.style.setProperty("--gear-y", "0deg");
+    });
+    const toggleGearBoost = () => gearField.classList.toggle("is-boosted");
+    gearField.addEventListener("click", toggleGearBoost);
+    gearField.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        toggleGearBoost();
+      }
+    });
   };
 
   const playSplash = () => {
@@ -28,13 +51,18 @@
     splashLocked = true;
     document.body.classList.add("intro-active");
     splash.classList.remove("is-dismissed", "is-revealing");
+    splash.classList.remove("is-ready");
     window.clearTimeout(splashTimer);
+    window.clearTimeout(sloganTimer);
+    sloganTimer = window.setTimeout(() => splash.classList.add("is-ready"), 1800);
   };
 
   const revealSplash = () => {
     if (!splash || splash.classList.contains("is-dismissed")) return;
+    splash.classList.add("is-ready");
     splash.classList.add("is-revealing");
     window.clearTimeout(splashTimer);
+    window.clearTimeout(sloganTimer);
     splashTimer = window.setTimeout(() => {
       splash.classList.add("is-dismissed");
       splashLocked = false;
