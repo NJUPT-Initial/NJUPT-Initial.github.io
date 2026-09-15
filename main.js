@@ -39,4 +39,31 @@
     );
     sections.forEach((sec) => io.observe(sec));
   }
+
+  const copyBtn = document.querySelector("[data-copy-qq]");
+  const copyNote = document.querySelector("[data-copy-note]");
+  if (copyBtn) {
+    copyBtn.addEventListener("click", async () => {
+      const qq = copyBtn.getAttribute("data-qq") || "1098311500";
+      try {
+        await navigator.clipboard.writeText(qq);
+      } catch {
+        const ta = document.createElement("textarea");
+        ta.value = qq;
+        ta.setAttribute("readonly", "");
+        ta.style.position = "fixed";
+        ta.style.left = "-9999px";
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand("copy");
+        ta.remove();
+      }
+      if (copyNote) {
+        copyNote.hidden = false;
+        window.setTimeout(() => {
+          copyNote.hidden = true;
+        }, 2000);
+      }
+    });
+  }
 })();
