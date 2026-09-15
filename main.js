@@ -84,8 +84,7 @@
     splash.innerHTML = `
       <div class="splash-slogan" id="intro-splash-slogan" aria-hidden="false">
         <span>NJUPT / INITIAL</span>
-        <strong>先让它动起来。</strong>
-        <small>向下滚动，进入网站</small>
+        <strong>先让它动起来</strong>
       </div>
       <div class="splash-stage">
         <div class="splash-half splash-orange" aria-hidden="true"></div>
@@ -115,7 +114,6 @@
           <span class="gear-label">机械 · 硬件 · 电控 · 算法</span>
           <span class="gear-hint">点击加速</span>
         </button>
-        <button class="splash-scroll splash-enter" type="button" id="intro-splash-hint" aria-label="向下滚动，进入网站"> <span>向下滚动，进入网站</span><small>也可点击这里或按 Enter</small><i aria-hidden="true"></i></button>
       </div>`;
     document.body.prepend(splash);
     const stage = splash.querySelector(".splash-stage");
@@ -150,7 +148,7 @@
     });
     splash
       .querySelector(".splash-scroll")
-      .addEventListener("click", revealSplash);
+      ?.addEventListener("click", revealSplash);
     splash.addEventListener("keydown", (event) => {
       if (event.key === "Tab") {
         const stageActive = !stage.inert;
