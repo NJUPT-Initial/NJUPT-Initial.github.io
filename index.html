@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8" />
@@ -299,16 +299,20 @@
         </header>
         <div class="join-inner">
           <div>
-            <div class="qq-card" aria-label="招新 QQ 群">
+            <div class="qq-card" aria-label="招新 QQ 群" data-qq-group="1098311500">
               <p class="qq-label">招新 QQ 群</p>
-              <p class="qq-number">1098311500</p>
+              <p class="qq-number" data-qq-number tabindex="0" role="button" aria-label="点击复制群号 1098311500">1098311500</p>
               <p class="qq-hint">进群后简单说：你是谁、想进哪个组、每周大概能投入多少时间。</p>
+              <ol class="qq-steps">
+                <li>点击「一键加群」，会尝试唤起本机 QQ</li>
+                <li>若未自动打开：打开 QQ → 添加 → 找群 → 粘贴群号</li>
+              </ol>
             </div>
             <div class="hero-actions">
-              <a class="btn btn-primary" href="https://qm.qq.com/q/1098311500" target="_blank" rel="noopener noreferrer">一键加群（QQ）</a>
+              <button type="button" class="btn btn-primary" data-join-qq data-qq="1098311500">一键加群（QQ）</button>
               <button type="button" class="btn btn-ghost" data-copy-qq data-qq="1098311500">复制群号</button>
             </div>
-            <p class="copy-note" data-copy-note hidden>群号已复制</p>
+            <p class="copy-note" data-copy-note hidden></p>
           </div>
           <aside class="join-panel" aria-label="加入步骤">
             <p class="join-panel-k">三步就够了</p>

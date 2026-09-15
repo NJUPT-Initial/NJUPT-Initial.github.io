@@ -40,29 +40,102 @@
     sections.forEach((sec) => io.observe(sec));
   }
 
+  const QQ_GROUP = "1098311500";
+  const noteEl = document.querySelector("[data-copy-note]");
+  let noteTimer = 0;
+
+  const showNote = (text, tone = "ok") => {
+    if (!noteEl) return;
+    noteEl.hidden = false;
+    noteEl.textContent = text;
+    noteEl.dataset.tone = tone;
+    window.clearTimeout(noteTimer);
+    noteTimer = window.setTimeout(() => {
+      noteEl.hidden = true;
+    }, 3200);
+  };
+
+  const copyText = async (text) => {
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(text);
+        return true;
+      }
+    } catch {
+      /* fall through */
+    }
+    try {
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      ta.setAttribute("readonly", "");
+      ta.style.position = "fixed";
+      ta.style.left = "-9999px";
+      ta.style.top = "0";
+      document.body.appendChild(ta);
+      ta.focus();
+      ta.select();
+      const ok = document.execCommand("copy");
+      ta.remove();
+      return ok;
+    } catch {
+      return false;
+    }
+  };
+
+  const openQqGroup = (group) => {
+    // Desktop QQ / 手机 QQ 通用唤起；未安装时会静默失败，由调用方提示
+    const schemes = [
+      `mqqwpa://im/chat?chat_type=group&uin=${group}&src_type=web&version=1`,
+      `mqqapi://card/show_pslcard?src_type=internal&version=1&uin=${group}&card_type=group&source=qrcode`,
+    ];
+    const iframe = document.createElement("iframe");
+    iframe.style.cssText = "position:fixed;width:0;height:0;border:0;visibility:hidden";
+    iframe.src = schemes[0];
+    document.body.appendChild(iframe);
+    window.setTimeout(() => {
+      window.location.href = schemes[0];
+    }, 80);
+    window.setTimeout(() => {
+      iframe.remove();
+    }, 1500);
+  };
+
+  const joinBtn = document.querySelector("[data-join-qq]");
+  if (joinBtn) {
+    joinBtn.addEventListener("click", async () => {
+      const group = joinBtn.getAttribute("data-qq") || QQ_GROUP;
+      const copied = await copyText(group);
+      openQqGroup(group);
+      showNote(
+        copied
+          ? `已复制群号 ${group}。若 QQ 未自动打开，请打开 QQ → 添加群 → 粘贴群号。`
+          : `请打开 QQ 搜索群号 ${group} 加入。`,
+        "ok"
+      );
+    });
+  }
+
   const copyBtn = document.querySelector("[data-copy-qq]");
-  const copyNote = document.querySelector("[data-copy-note]");
   if (copyBtn) {
     copyBtn.addEventListener("click", async () => {
-      const qq = copyBtn.getAttribute("data-qq") || "1098311500";
-      try {
-        await navigator.clipboard.writeText(qq);
-      } catch {
-        const ta = document.createElement("textarea");
-        ta.value = qq;
-        ta.setAttribute("readonly", "");
-        ta.style.position = "fixed";
-        ta.style.left = "-9999px";
-        document.body.appendChild(ta);
-        ta.select();
-        document.execCommand("copy");
-        ta.remove();
-      }
-      if (copyNote) {
-        copyNote.hidden = false;
-        window.setTimeout(() => {
-          copyNote.hidden = true;
-        }, 2000);
+      const group = copyBtn.getAttribute("data-qq") || QQ_GROUP;
+      const ok = await copyText(group);
+      showNote(ok ? `群号 ${group} 已复制` : `复制失败，请手动记下群号 ${group}`, ok ? "ok" : "warn");
+    });
+  }
+
+  const qqNumber = document.querySelector("[data-qq-number]");
+  if (qqNumber) {
+    const activate = async () => {
+      const group = qqNumber.textContent.trim() || QQ_GROUP;
+      const ok = await copyText(group);
+      showNote(ok ? `群号 ${group} 已复制` : `请手动复制：${group}`, ok ? "ok" : "warn");
+    };
+    qqNumber.addEventListener("click", activate);
+    qqNumber.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        activate();
       }
     });
   }

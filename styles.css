@@ -1210,6 +1210,16 @@ code {
   letter-spacing: 0.06em;
   color: var(--ink);
   line-height: 1.1;
+  cursor: pointer;
+  user-select: all;
+  border-bottom: 1px dashed color-mix(in srgb, var(--signal) 55%, transparent);
+  display: inline-block;
+  padding-bottom: 0.1rem;
+}
+
+.qq-number:hover,
+.qq-number:focus-visible {
+  color: var(--signal);
 }
 
 .qq-hint {
@@ -1219,10 +1229,32 @@ code {
   max-width: 40ch;
 }
 
+.qq-steps {
+  margin: 0.85rem 0 0;
+  padding-left: 1.1rem;
+  color: var(--muted);
+  font-size: 0.86rem;
+  line-height: 1.55;
+}
+
+.qq-steps li + li {
+  margin-top: 0.25rem;
+}
+
 .copy-note {
-  margin: 0.65rem 0 0;
-  font-size: 0.88rem;
+  margin: 0.75rem 0 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
   color: var(--alert);
+  max-width: 46ch;
+}
+
+.copy-note[data-tone="warn"] {
+  color: var(--alert);
+}
+
+.copy-note[data-tone="ok"] {
+  color: var(--signal);
 }
 
 .join-alt {
