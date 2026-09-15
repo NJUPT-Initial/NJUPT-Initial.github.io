@@ -3,6 +3,18 @@
 
   document.body.classList.add("js-ready");
 
+  const splashCopy = document.body.classList.contains("page-robocon")
+    ? "规则写在场上"
+    : document.body.classList.contains("page-team")
+      ? "找个工位，开始做"
+      : "让机器先动起来";
+  const splash = document.createElement("div");
+  splash.className = "intro-splash";
+  splash.setAttribute("aria-hidden", "true");
+  splash.innerHTML = `<div class="splash-half splash-orange"></div><div class="splash-half splash-blue"></div><div class="splash-copy"><span>INITIAL / ROBOCON</span><strong>${splashCopy}</strong></div><img class="splash-logo" src="assets/team-logo.png" alt=""><img class="splash-robot" src="assets/robot-cutout.png" alt="">`;
+  document.body.prepend(splash);
+  window.setTimeout(() => splash.classList.add("is-dismissed"), reduceMotion ? 80 : 1700);
+
   const boot = () => document.body.classList.add("is-booted");
   if (reduceMotion) {
     boot();
