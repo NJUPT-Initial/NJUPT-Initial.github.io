@@ -18,7 +18,7 @@
     splash = document.createElement("div");
     splash.className = "intro-splash";
     splash.setAttribute("aria-hidden", "true");
-    splash.innerHTML = `<div class="splash-half splash-orange"></div><div class="splash-half splash-blue"></div><div class="splash-grid"></div><img class="splash-logo" src="assets/team-logo.png" alt=""><div class="splash-robot-wrap"><img class="splash-robot splash-ghost splash-ghost-orange" src="assets/robot-cutout.png" alt=""><img class="splash-robot splash-ghost splash-ghost-blue" src="assets/robot-cutout.png" alt=""><img class="splash-robot" src="assets/robot-cutout.png" alt=""></div><div class="splash-name"><span>NJUPT / INITIAL</span><strong>${splashCopy}</strong><small>ROBOCON ROBOTICS TEAM</small></div><div class="splash-gear-field" aria-hidden="true"><i class="gear gear-large"></i><i class="gear gear-small"></i><i class="gear gear-ring"></i><span class="gear-label">SYSTEM / READY</span></div><div class="splash-scroll"><span>SCROLL</span><i></i></div>`;
+    splash.innerHTML = `<div class="splash-half splash-orange"></div><div class="splash-half splash-blue"></div><div class="splash-grid"></div><img class="splash-logo" src="assets/team-logo.png" alt=""><div class="splash-robot-wrap"><img class="splash-robot splash-ghost splash-ghost-orange" src="assets/robot-cutout.png" alt=""><img class="splash-robot splash-ghost splash-ghost-blue" src="assets/robot-cutout.png" alt=""><img class="splash-robot" src="assets/robot-cutout.png" alt=""></div><div class="splash-name"><span>NJUPT / INITIAL</span><strong>${splashCopy}</strong><small>ROBOCON ROBOTICS TEAM</small></div><div class="splash-gear-field" aria-hidden="true"><i class="gear gear-large"></i><i class="gear gear-small"></i><i class="gear gear-ring"></i><span class="gear-label">SYSTEM / READY</span><span class="gear-status gear-status-a">MOTOR ONLINE</span><span class="gear-status gear-status-b">FIELD TEST / 2026</span></div><div class="splash-scroll"><span>SCROLL</span><i></i></div>`;
     document.body.prepend(splash);
   };
 
@@ -26,6 +26,7 @@
     if (reduceMotion || splashLocked) return;
     buildSplash();
     splashLocked = true;
+    document.body.classList.add("intro-active");
     splash.classList.remove("is-dismissed", "is-revealing");
     window.clearTimeout(splashTimer);
   };
@@ -37,6 +38,7 @@
     splashTimer = window.setTimeout(() => {
       splash.classList.add("is-dismissed");
       splashLocked = false;
+      document.body.classList.remove("intro-active");
     }, 1450);
   };
 
@@ -48,8 +50,6 @@
     playSplash();
   }
 
-  let lastScrollY = window.scrollY;
-  let wheelResetTimer = 0;
   window.addEventListener("wheel", (event) => {
     if (reduceMotion) return;
     const direction = event.deltaY > 0 ? "down" : "up";
@@ -59,8 +59,22 @@
     } else if (direction === "down" && splash && !splash.classList.contains("is-dismissed")) {
       revealSplash();
     }
-    lastScrollY = window.scrollY;
   }, { passive: true });
+
+  let touchStartY = 0;
+  window.addEventListener("touchstart", (event) => {
+    touchStartY = event.touches[0]?.clientY || 0;
+  }, { passive: true });
+  window.addEventListener("touchmove", (event) => {
+    if (!splashLocked || reduceMotion) return;
+    const currentY = event.touches[0]?.clientY || touchStartY;
+    if (touchStartY - currentY > 12) {
+      event.preventDefault();
+      revealSplash();
+    } else {
+      event.preventDefault();
+    }
+  }, { passive: false });
 
   const boot = () => document.body.classList.add("is-booted");
   if (reduceMotion) {
