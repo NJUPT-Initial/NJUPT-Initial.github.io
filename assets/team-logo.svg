@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-labelledby="title desc">
+  <title id="title">NJUPT Initial 队徽</title>
+  <desc id="desc">由几何线条组成的 Initial 战队标志</desc>
+  <g fill="none" stroke="#000026" stroke-width="12" stroke-linejoin="miter">
+    <path d="M42 164V78l25 15v86z"/>
+    <path d="M86 184V50l25 15v134z"/>
+    <path d="M130 166V86l25 15v80z"/>
+    <path d="M174 138V42l26 15v96z"/>
+    <path d="M154 105 202 77v30l-48 28z"/>
+  </g>
+  <path d="M34 210h172" stroke="#000026" stroke-width="4"/>
+  <text x="120" y="231" text-anchor="middle" font-family="Arial Narrow, sans-serif" font-size="17" letter-spacing="5" fill="#000026">INITIAL</text>
+</svg>
