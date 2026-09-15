@@ -8,12 +8,21 @@
     : document.body.classList.contains("page-team")
       ? "找个工位，开始做"
       : "让机器先动起来";
-  const splash = document.createElement("div");
-  splash.className = "intro-splash";
-  splash.setAttribute("aria-hidden", "true");
-  splash.innerHTML = `<div class="splash-half splash-orange"></div><div class="splash-half splash-blue"></div><div class="splash-copy"><span>INITIAL / ROBOCON</span><strong>${splashCopy}</strong></div><img class="splash-logo" src="assets/team-logo.png" alt=""><img class="splash-robot" src="assets/robot-cutout.png" alt="">`;
-  document.body.prepend(splash);
-  window.setTimeout(() => splash.classList.add("is-dismissed"), reduceMotion ? 80 : 1700);
+  const splashSeenKey = "initial-intro-seen";
+  let splash;
+  try {
+    splash = sessionStorage.getItem(splashSeenKey) ? null : document.createElement("div");
+    if (splash) sessionStorage.setItem(splashSeenKey, "1");
+  } catch {
+    splash = document.createElement("div");
+  }
+  if (splash && !reduceMotion) {
+    splash.className = "intro-splash";
+    splash.setAttribute("aria-hidden", "true");
+    splash.innerHTML = `<div class="splash-half splash-orange"></div><div class="splash-half splash-blue"></div><div class="splash-copy"><span>INITIAL / ROBOCON</span><strong>${splashCopy}</strong></div><img class="splash-logo" src="assets/team-logo.png" alt=""><img class="splash-robot splash-ghost splash-ghost-orange" src="assets/robot-cutout.png" alt=""><img class="splash-robot splash-ghost splash-ghost-blue" src="assets/robot-cutout.png" alt=""><img class="splash-robot" src="assets/robot-cutout.png" alt="">`;
+    document.body.prepend(splash);
+    window.setTimeout(() => splash.classList.add("is-dismissed"), 2400);
+  }
 
   const boot = () => document.body.classList.add("is-booted");
   if (reduceMotion) {
