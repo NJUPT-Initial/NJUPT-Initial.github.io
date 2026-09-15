@@ -18,7 +18,7 @@
     splash = document.createElement("div");
     splash.className = "intro-splash";
     splash.setAttribute("aria-hidden", "true");
-    splash.innerHTML = `<div class="splash-half splash-orange"></div><div class="splash-half splash-blue"></div><div class="splash-copy"><span>INITIAL / ROBOCON</span><strong>${splashCopy}</strong></div><img class="splash-logo" src="assets/team-logo.png" alt=""><img class="splash-robot splash-ghost splash-ghost-orange" src="assets/robot-cutout.png" alt=""><img class="splash-robot splash-ghost splash-ghost-blue" src="assets/robot-cutout.png" alt=""><img class="splash-robot" src="assets/robot-cutout.png" alt="">`;
+    splash.innerHTML = `<div class="splash-half splash-orange"></div><div class="splash-half splash-blue"></div><div class="splash-grid"></div><img class="splash-logo" src="assets/team-logo.png" alt=""><div class="splash-robot-wrap"><img class="splash-robot splash-ghost splash-ghost-orange" src="assets/robot-cutout.png" alt=""><img class="splash-robot splash-ghost splash-ghost-blue" src="assets/robot-cutout.png" alt=""><img class="splash-robot" src="assets/robot-cutout.png" alt=""></div><div class="splash-name"><span>NJUPT / INITIAL</span><strong>${splashCopy}</strong><small>ROBOCON ROBOTICS TEAM</small></div><div class="splash-gear-field" aria-hidden="true"><i class="gear gear-large"></i><i class="gear gear-small"></i><i class="gear gear-ring"></i><span class="gear-label">SYSTEM / READY</span></div><div class="splash-scroll"><span>SCROLL</span><i></i></div>`;
     document.body.prepend(splash);
   };
 
@@ -28,13 +28,16 @@
     splashLocked = true;
     splash.classList.remove("is-dismissed", "is-revealing");
     window.clearTimeout(splashTimer);
+  };
+
+  const revealSplash = () => {
+    if (!splash || splash.classList.contains("is-dismissed")) return;
+    splash.classList.add("is-revealing");
+    window.clearTimeout(splashTimer);
     splashTimer = window.setTimeout(() => {
-      splash.classList.add("is-revealing");
-      window.setTimeout(() => {
-        splash.classList.add("is-dismissed");
-        splashLocked = false;
-      }, 1450);
-    }, 1250);
+      splash.classList.add("is-dismissed");
+      splashLocked = false;
+    }, 1450);
   };
 
   const seen = (() => {
@@ -54,9 +57,7 @@
     if (direction === "up" && atTop && !splashLocked) {
       playSplash();
     } else if (direction === "down" && splash && !splash.classList.contains("is-dismissed")) {
-      splash.classList.add("is-revealing");
-      window.clearTimeout(wheelResetTimer);
-      wheelResetTimer = window.setTimeout(() => splash.classList.add("is-dismissed"), 900);
+      revealSplash();
     }
     lastScrollY = window.scrollY;
   }, { passive: true });
