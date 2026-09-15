@@ -1513,3 +1513,62 @@ body.js-ready.is-booted .telemetry-line {
     transform: none;
   }
 }
+
+/* —— Three-page information architecture —— */
+.accent-text { color: var(--signal); }
+.hero-metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2rem; padding-top: 1.1rem; border-top: 1px solid var(--line); }
+.hero-metrics div { display: grid; gap: .2rem; }
+.hero-metrics strong { font-family: var(--font-label); font-size: .95rem; color: var(--ink); }
+.hero-metrics span, .photo-caption { color: var(--muted); font-size: .72rem; }
+.photo-caption { display: flex; justify-content: space-between; padding: .7rem 1rem; font-family: var(--font-label); letter-spacing: .08em; border-top: 1px solid var(--line); }
+.achievement-grid { display: grid; grid-template-columns: 1fr 1fr 1.05fr; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; }
+.achievement-card, .achievement-note { min-height: 180px; padding: 1.35rem; background: color-mix(in srgb, var(--bg) 90%, var(--panel)); display: flex; flex-direction: column; justify-content: space-between; }
+.achievement-card.featured { background: linear-gradient(145deg, color-mix(in srgb, var(--signal) 18%, var(--bg)), var(--bg)); }
+.achievement-k, .timeline-year, .event-no, .team-no, .stack-list span, .station-note span { color: var(--signal); font: .7rem var(--font-label); letter-spacing: .1em; }
+.achievement-card strong { font-size: clamp(1.7rem, 3vw, 2.5rem); letter-spacing: -.04em; }
+.achievement-card > span:last-child, .achievement-note p, .timeline p, .event-card p, .process-step p, .stack-list p, .stack-aside p, .team-grid p, .station-note p, .faq-grid p { color: var(--muted); margin: 0; font-size: .92rem; }
+.note-mark { color: var(--alert); font-size: 2rem; }
+.achievement-note p { max-width: 24ch; font-size: 1.05rem; color: var(--ink); }
+.timeline { list-style: none; padding: 0; margin: 0; display: grid; gap: 0; border-left: 1px solid var(--signal); }
+.timeline li { display: grid; grid-template-columns: 9rem 1fr; gap: 1.5rem; padding: 1.4rem 1.5rem; border-bottom: 1px solid var(--line); position: relative; }
+.timeline li::before { content: ""; position: absolute; left: -5px; top: 1.7rem; width: 9px; height: 9px; background: var(--signal); border-radius: 50%; box-shadow: 0 0 0 4px var(--bg); }
+.timeline h3 { margin-bottom: .35rem; }
+.join-banner { display: flex; align-items: end; justify-content: space-between; gap: 2rem; }
+.join-banner h2 { margin-bottom: .65rem; }
+.join-banner p:not(.bay-code) { color: var(--muted); max-width: 52ch; margin: 0; }
+.page-hero { padding: clamp(3.5rem, 9vw, 7rem) 0 clamp(3rem, 7vw, 5rem); border-bottom: 1px solid var(--line); background: radial-gradient(ellipse 50% 100% at 10% 0%, color-mix(in srgb, var(--signal) 13%, transparent), transparent 70%); }
+.page-hero-grid { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 2rem; }
+.page-hero h1 { max-width: 15ch; font-size: clamp(2.5rem, 7vw, 5rem); }
+.page-index { font: clamp(3rem, 8vw, 6rem)/.8 var(--font-label); color: color-mix(in srgb, var(--signal) 35%, transparent); text-align: right; }
+.page-index span { display: block; margin-top: .7rem; font-size: .68rem; color: var(--muted); letter-spacing: .12em; }
+.event-grid, .process-grid, .team-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; }
+.event-card { min-height: 250px; padding: 1.5rem; background: var(--bg); display: flex; flex-direction: column; gap: .8rem; }
+.event-card-hot { background: linear-gradient(145deg, color-mix(in srgb, var(--signal) 13%, var(--bg)), var(--bg)); }
+.event-card h3 { font-size: 1.6rem; }
+.event-card strong { margin-top: auto; color: var(--alert); font-family: var(--font-label); }
+.process-grid { grid-template-columns: repeat(4, 1fr); }
+.process-step, .team-grid article { padding: 1.25rem; background: color-mix(in srgb, var(--panel) 46%, var(--bg)); min-height: 150px; }
+.process-step span { color: var(--signal); font: .72rem var(--font-label); }
+.process-step h3, .team-grid h3 { margin: .8rem 0 .35rem; }
+.stack-layout { display: grid; grid-template-columns: 1.15fr .85fr; gap: 1rem; }
+.stack-list { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.stack-list > div { display: grid; gap: .35rem; padding: 1.1rem; background: var(--bg); }
+.stack-list strong { font-size: 1.1rem; }
+.stack-aside { padding: 1.5rem; border: 1px solid var(--signal); background: linear-gradient(145deg, color-mix(in srgb, var(--signal) 11%, transparent), var(--panel)); }
+.stack-aside-k { font: .7rem var(--font-label) !important; color: var(--signal) !important; letter-spacing: .12em; }
+.stack-aside p:not(.stack-aside-k) { color: var(--ink); font-size: 1.2rem; margin: 2rem 0; }
+.team-grid { grid-template-columns: repeat(4, 1fr); }
+.team-grid article { min-height: 220px; display: flex; flex-direction: column; }
+.team-grid article a, .stack-aside a { margin-top: auto; color: var(--signal); text-decoration: none; font-family: var(--font-label); font-size: .78rem; }
+.station-note { display: grid; grid-template-columns: auto 1fr; gap: .45rem 1rem; margin-top: 1rem; padding: 1rem 1.2rem; border: 1px dashed var(--line); }
+.station-note strong { color: var(--alert); }
+.station-note p { grid-column: 2; }
+.join-panel ol { list-style: none; margin: 0; padding: 0; display: grid; gap: .8rem; }
+.join-panel ol li { display: grid; grid-template-columns: 1.7rem 1fr; gap: .5rem; color: var(--muted); }
+.join-panel ol span { color: var(--signal); font: .75rem var(--font-label); }
+.faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; }
+.faq-grid details { padding: 1rem 1.1rem; border: 1px solid var(--line); background: color-mix(in srgb, var(--panel) 40%, var(--bg)); }
+.faq-grid summary { cursor: pointer; font-weight: 650; }
+.faq-grid p { padding-top: .7rem; }
+@media (max-width: 800px) { .achievement-grid, .process-grid, .team-grid, .stack-layout, .page-hero-grid { grid-template-columns: 1fr 1fr; } .achievement-note { grid-column: 1 / -1; min-height: 130px; } .stack-layout { grid-template-columns: 1fr; } }
+@media (max-width: 600px) { .hero-metrics, .achievement-grid, .event-grid, .process-grid, .team-grid, .stack-list, .faq-grid { grid-template-columns: 1fr; } .timeline li { grid-template-columns: 1fr; gap: .35rem; } .page-hero-grid { grid-template-columns: 1fr; } .page-index { text-align: left; font-size: 3rem; } .join-banner { display: grid; } .station-note { grid-template-columns: 1fr; } .station-note p { grid-column: 1; } }
