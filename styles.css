@@ -21,6 +21,8 @@
   --radius: 4px;
   --radius-lg: 8px;
   --header-h: 64px;
+  --shadow-panel: 0 24px 70px rgba(0, 0, 0, 0.34);
+  --ease-out: cubic-bezier(.2, .8, .2, 1);
 
   --space-1: 0.35rem;
   --space-2: 0.7rem;
@@ -56,6 +58,11 @@ body {
   background-attachment: fixed;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+
+::selection {
+  color: var(--ink-on-alert);
+  background: var(--alert);
 }
 
 body::before {
@@ -126,7 +133,8 @@ a:hover {
   height: var(--header-h);
   border-bottom: 1px solid var(--line);
   background: color-mix(in srgb, var(--bg) 88%, transparent);
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(16px) saturate(130%);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.02), 0 12px 30px rgba(0, 0, 0, 0.12);
 }
 
 .header-inner {
@@ -215,6 +223,10 @@ a:hover {
 .nav a[aria-current="true"] {
   color: var(--ink);
   background: color-mix(in srgb, var(--panel) 85%, transparent);
+}
+
+.nav a[aria-current="true"] {
+  box-shadow: inset 0 -2px 0 var(--signal);
 }
 
 .nav-cta {
@@ -338,7 +350,7 @@ code {
   text-decoration: none;
   border: 1px solid transparent;
   cursor: pointer;
-  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+  transition: background 0.2s var(--ease-out), border-color 0.2s var(--ease-out), color 0.2s var(--ease-out), box-shadow 0.2s var(--ease-out), transform 0.2s var(--ease-out);
 }
 
 .btn-primary {
@@ -376,6 +388,22 @@ code {
 /* —— Hero —— */
 .hero {
   padding: clamp(2.75rem, 7vw, 5rem) 0 clamp(2.25rem, 5vw, 3.5rem);
+  overflow: clip;
+  position: relative;
+}
+
+.hero::after {
+  content: "INITIAL / 2026";
+  position: absolute;
+  right: max(1rem, calc((100vw - var(--shell)) / 2));
+  bottom: 1.1rem;
+  color: color-mix(in srgb, var(--muted) 38%, transparent);
+  font: 0.65rem/1 var(--font-label);
+  letter-spacing: 0.2em;
+  transform: rotate(-90deg) translateX(100%);
+  transform-origin: right bottom;
+  pointer-events: none;
+}
 }
 
 .hero-grid {
@@ -413,6 +441,19 @@ code {
 .hero-title-line.accent {
   color: var(--signal);
   text-shadow: 0 0 48px color-mix(in srgb, var(--signal) 30%, transparent);
+  position: relative;
+}
+
+.hero-title-line.accent::after {
+  content: "";
+  display: inline-block;
+  width: clamp(2.5rem, 10vw, 7rem);
+  height: 0.11em;
+  margin: 0 0 0.12em 0.35em;
+  background: var(--alert);
+  box-shadow: 0 0 18px color-mix(in srgb, var(--alert) 42%, transparent);
+  vertical-align: middle;
+}
 }
 
 .hero-lead {
@@ -504,6 +545,14 @@ code {
     0 28px 70px color-mix(in srgb, #000 48%, transparent),
     0 0 90px color-mix(in srgb, var(--signal) 9%, transparent);
   position: relative;
+  transform: rotate(0.35deg);
+  transition: transform 0.35s var(--ease-out), box-shadow 0.35s var(--ease-out);
+}
+
+.hero-panel:hover {
+  transform: rotate(0deg) translateY(-4px);
+  box-shadow: var(--shadow-panel), 0 0 90px color-mix(in srgb, var(--signal) 14%, transparent);
+}
 }
 
 .hero-panel::before {
@@ -776,6 +825,7 @@ code {
 
 .channel:hover {
   background: color-mix(in srgb, var(--signal) 5%, var(--bg));
+  box-shadow: inset 0 3px 0 var(--signal);
 }
 
 .channel-prefer {
@@ -865,6 +915,7 @@ code {
 
 .hw-block:hover {
   background: color-mix(in srgb, var(--signal) 5%, var(--bg));
+  box-shadow: inset 0 3px 0 var(--signal);
 }
 
 .hw-block h3 {
@@ -1351,6 +1402,18 @@ body.js-ready.is-booted .telemetry-line {
 }
 
 @media (max-width: 720px) {
+  :root {
+    --header-h: 58px;
+  }
+
+  .hero::after {
+    display: none;
+  }
+
+  .hero-title-line.accent::after {
+    width: 2.5rem;
+  }
+
   .nav {
     max-width: min(58vw, 280px);
     -webkit-overflow-scrolling: touch;
@@ -1360,6 +1423,10 @@ body.js-ready.is-booted .telemetry-line {
   .nav a {
     padding: 0.55rem 0.55rem;
     font-size: 0.82rem;
+  }
+
+  .nav-cta {
+    margin-left: 0.15rem;
   }
 
   .brand-sub {
