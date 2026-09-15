@@ -1237,10 +1237,6 @@ code {
   line-height: 1.55;
 }
 
-.qq-steps li + li {
-  margin-top: 0.25rem;
-}
-
 .copy-note {
   margin: 0.75rem 0 0;
   font-size: 0.9rem;
