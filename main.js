@@ -9,20 +9,57 @@
       ? "找个工位，开始做"
       : "让机器先动起来";
   const splashSeenKey = "initial-intro-seen";
-  let splash;
-  try {
-    splash = sessionStorage.getItem(splashSeenKey) ? null : document.createElement("div");
-    if (splash) sessionStorage.setItem(splashSeenKey, "1");
-  } catch {
+  let splash = null;
+  let splashTimer = 0;
+  let splashLocked = false;
+
+  const buildSplash = () => {
+    if (splash || reduceMotion) return;
     splash = document.createElement("div");
-  }
-  if (splash && !reduceMotion) {
     splash.className = "intro-splash";
     splash.setAttribute("aria-hidden", "true");
     splash.innerHTML = `<div class="splash-half splash-orange"></div><div class="splash-half splash-blue"></div><div class="splash-copy"><span>INITIAL / ROBOCON</span><strong>${splashCopy}</strong></div><img class="splash-logo" src="assets/team-logo.png" alt=""><img class="splash-robot splash-ghost splash-ghost-orange" src="assets/robot-cutout.png" alt=""><img class="splash-robot splash-ghost splash-ghost-blue" src="assets/robot-cutout.png" alt=""><img class="splash-robot" src="assets/robot-cutout.png" alt="">`;
     document.body.prepend(splash);
-    window.setTimeout(() => splash.classList.add("is-dismissed"), 2850);
+  };
+
+  const playSplash = () => {
+    if (reduceMotion || splashLocked) return;
+    buildSplash();
+    splashLocked = true;
+    splash.classList.remove("is-dismissed", "is-revealing");
+    window.clearTimeout(splashTimer);
+    splashTimer = window.setTimeout(() => {
+      splash.classList.add("is-revealing");
+      window.setTimeout(() => {
+        splash.classList.add("is-dismissed");
+        splashLocked = false;
+      }, 1450);
+    }, 1250);
+  };
+
+  const seen = (() => {
+    try { return sessionStorage.getItem(splashSeenKey) === "1"; } catch { return false; }
+  })();
+  if (!seen && !reduceMotion) {
+    try { sessionStorage.setItem(splashSeenKey, "1"); } catch { /* continue without persistence */ }
+    playSplash();
   }
+
+  let lastScrollY = window.scrollY;
+  let wheelResetTimer = 0;
+  window.addEventListener("wheel", (event) => {
+    if (reduceMotion) return;
+    const direction = event.deltaY > 0 ? "down" : "up";
+    const atTop = window.scrollY <= 8;
+    if (direction === "up" && atTop && !splashLocked) {
+      playSplash();
+    } else if (direction === "down" && splash && !splash.classList.contains("is-dismissed")) {
+      splash.classList.add("is-revealing");
+      window.clearTimeout(wheelResetTimer);
+      wheelResetTimer = window.setTimeout(() => splash.classList.add("is-dismissed"), 900);
+    }
+    lastScrollY = window.scrollY;
+  }, { passive: true });
 
   const boot = () => document.body.classList.add("is-booted");
   if (reduceMotion) {

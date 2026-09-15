@@ -1670,7 +1670,8 @@ body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-in
 .intro-splash { position: fixed; inset: 0; z-index: 200; overflow: hidden; background: #000026; pointer-events: none; transition: opacity .65s ease, visibility .65s ease; }
 .intro-splash.is-dismissed { opacity: 0; visibility: hidden; }
 .splash-half { position: absolute; inset-block: 0; width: 100%; transform: translateY(0); transform-origin: center; }
-.splash-orange { left: 0; z-index: 1; background: #FF770F; clip-path: polygon(0 0, 100% 0, 100% 91%, 92% 95%, 83% 92%, 73% 96%, 63% 92%, 53% 95%, 43% 92%, 33% 96%, 22% 92%, 11% 95%, 0 91%); animation: splash-curtain-out 1.35s cubic-bezier(.03,.1,.25,1.02) 1.25s forwards; }
+.splash-orange { left: 0; z-index: 1; background: #FF770F; clip-path: polygon(0 0, 100% 0, 100% 91%, 92% 95%, 83% 92%, 73% 96%, 63% 92%, 53% 95%, 43% 92%, 33% 96%, 22% 92%, 11% 95%, 0 91%); }
+.intro-splash.is-revealing .splash-orange { animation: splash-curtain-out 1.35s cubic-bezier(.03,.1,.25,1.02) forwards; }
 .splash-blue { right: 0; z-index: 0; background: #000026; }
 .splash-copy { position: absolute; z-index: 3; inset: 10% 0 auto; text-align: center; color: #fff; opacity: 0; animation: splash-copy-in .7s ease .25s forwards; }
 .splash-copy span { display: block; color: #000026; font: .7rem var(--font-label); letter-spacing: .18em; }
