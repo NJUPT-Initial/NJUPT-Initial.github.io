@@ -21,7 +21,7 @@
     splash.setAttribute("aria-hidden", "true");
     splash.innerHTML = `<div class="splash-half splash-orange"></div><div class="splash-half splash-blue"></div><div class="splash-copy"><span>INITIAL / ROBOCON</span><strong>${splashCopy}</strong></div><img class="splash-logo" src="assets/team-logo.png" alt=""><img class="splash-robot splash-ghost splash-ghost-orange" src="assets/robot-cutout.png" alt=""><img class="splash-robot splash-ghost splash-ghost-blue" src="assets/robot-cutout.png" alt=""><img class="splash-robot" src="assets/robot-cutout.png" alt="">`;
     document.body.prepend(splash);
-    window.setTimeout(() => splash.classList.add("is-dismissed"), 2400);
+    window.setTimeout(() => splash.classList.add("is-dismissed"), 2850);
   }
 
   const boot = () => document.body.classList.add("is-booted");

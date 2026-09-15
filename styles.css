@@ -1669,9 +1669,9 @@ body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-in
 /* —— Persona-inspired split-color entry sequence —— */
 .intro-splash { position: fixed; inset: 0; z-index: 200; overflow: hidden; background: #000026; pointer-events: none; transition: opacity .65s ease, visibility .65s ease; }
 .intro-splash.is-dismissed { opacity: 0; visibility: hidden; }
-.splash-half { position: absolute; inset-block: 0; width: 50%; transform: scaleX(1); transform-origin: center; animation: splash-split 1.15s cubic-bezier(.76,0,.24,1) 1.15s forwards; }
-.splash-orange { left: 0; background: #ff770f; }
-.splash-blue { right: 0; background: #000026; }
+.splash-half { position: absolute; inset-block: 0; width: 100%; transform: translateY(0); transform-origin: center; }
+.splash-orange { left: 0; z-index: 1; background: #FF770F; clip-path: polygon(0 0, 100% 0, 100% 91%, 92% 95%, 83% 92%, 73% 96%, 63% 92%, 53% 95%, 43% 92%, 33% 96%, 22% 92%, 11% 95%, 0 91%); animation: splash-curtain-out 1.35s cubic-bezier(.03,.1,.25,1.02) 1.25s forwards; }
+.splash-blue { right: 0; z-index: 0; background: #000026; }
 .splash-copy { position: absolute; z-index: 3; inset: 10% 0 auto; text-align: center; color: #fff; opacity: 0; animation: splash-copy-in .7s ease .25s forwards; }
 .splash-copy span { display: block; color: #000026; font: .7rem var(--font-label); letter-spacing: .18em; }
 .splash-copy strong { display: block; margin-top: .7rem; font: clamp(1.35rem, 4vw, 2.8rem) var(--font-display); letter-spacing: .08em; }
@@ -1684,5 +1684,5 @@ body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-in
 @keyframes splash-logo-in { from { opacity: 0; transform: scale(.7) rotate(-8deg); } to { opacity: 1; transform: scale(1) rotate(0); } }
 @keyframes splash-robot-in { to { opacity: .78; transform: translateX(-50%) translateY(0) scale(1); } }
 @keyframes splash-ghost-in { 0% { opacity: 0; transform: translateX(-50%) translateY(42px) scale(1.08); } 45% { opacity: .5; } 100% { opacity: .16; transform: translateX(calc(-50% - 22px)) translateY(0) scale(1); } }
-@keyframes splash-split { to { transform: scaleX(0); } }
+@keyframes splash-curtain-out { to { transform: translateY(108%); } }
 @media (prefers-reduced-motion: reduce) { .intro-splash { display: none; } }
