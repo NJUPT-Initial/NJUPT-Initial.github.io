@@ -85,6 +85,7 @@
       <div class="splash-slogan" id="intro-splash-slogan" aria-hidden="false">
         <span>NJUPT / INITIAL</span>
         <strong>先让它动起来</strong>
+        <small>南京邮电大学机器人战队<br>ROBOCON / 2026</small>
       </div>
       <div class="splash-stage">
         <div class="splash-half splash-orange" aria-hidden="true"></div>
